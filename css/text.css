@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'Apex';
+    /* Custom name for the font */
+    src: url('../fonts/ApexMk2-Regular.otf') format('opentype');
+    /* Path to your font file */
+    font-weight: normal;
+    /* Specify if it's a normal, bold, etc. font */
+    font-style: normal;
+    /* Specify the style: normal, italic, etc. */
+}
+
+@font-face {
+    font-family: 'Apex';
+    /* Custom name for the font */
+    src: url('../fonts/ApexMk2-BoldExtended.otf') format('opentype');
+    /* Path to your font file */
+    font-weight: bold;
+    /* Specify if it's a normal, bold, etc. font */
+    font-style: normal;
+    /* Specify the style: normal, italic, etc. */
+}
+
+@font-face {
+    font-family: 'Apex';
+    /* Custom name for the font */
+    src: url('../fonts/ApexMk2-LightCondensed.otf') format('opentype');
+    /* Path to your font file */
+    font-weight: lighter;
+    /* Specify if it's a normal, bold, etc. font */
+    font-style: normal;
+    /* Specify the style: normal, italic, etc. */
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+    font-family: "Apex", sans-serif;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-size: clamp(12px, 4vw, 24px);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: clamp(8px, 3vw, 12px);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.big-title {
+    text-align: center;
+    font-size: clamp(46px, 12vw, 150px);
+
+}
+
+.title {
+    font-size: clamp(1.5rem, 4.5vw, 7rem);
+}
+
+.smtitle {
+    /* font-size: clamp(8px, 8vw, 16px); */
+    font-size: 16px;
+}
+
+.txtl {
+    text-align: left;
+}
+
+.txt2 {
+    text-align: left;
+}
+
+.txt-container-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-word-art {
+    font-family: "Apex", sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: clamp(2rem, 20vw, 21vw);
+
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.s-letter{
+    /* position: absolute; */
+    margin: 0;
+    transform: translateX(40px);
+}
+
+.graphic-txt{
+  /* display: flex;
+  flex-direction: column;
+  gap: 15vh; */
+}
