@@ -51,9 +51,42 @@ html, body {
 }
 
 .search-container{
+    position: relative;
     display: flex;
+    padding: 5px;
     width: 80vw;
     min-width: 300px;
     margin: 0 auto;
+    border-radius: var(--corner);
+
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+.search-filter{
+    /* flex: 1; */
+    width: 25%;
+    height: 100%;
+    background-color: rgb(99, 92, 83);
+}
+.search-filter > select{
+    border: none;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--corner);
+}
+.search-box{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(99, 92, 83);
+}
+
+.search-box > input{
+    border: none;
+    background-color: white;
+    width: 100%;
+    height: 100%;
     border-radius: var(--corner);
 }

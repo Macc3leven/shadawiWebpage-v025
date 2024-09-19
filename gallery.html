@@ -21,35 +21,57 @@
             <p>SPECIMEN</p>
         </div>
         <div class="tab">
-            <p>SPECIMEN</p>
+            <p>OWNERS</p>
         </div>
         <div class="tab" style="border-radius: 0 24px 0 0;">
-            <p>SPECIMEN</p>
+            <p>PLAYERS</p>
         </div>
     </div>
-    <div class="search-container">
 
-    </div>
-    <div class="search-filter">
-        <label for="dropdown">CLASS</label>
-        <select name="dropdown" id="dropdown">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-        </select>
-    </div>
-    <div class="search-filter">
-        <label for="dropdown">Choose an option:</label>
-        <select name="dropdown" id="dropdown">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-        </select>
-    </div>
-    <div class="search-box">
-        <span class="search-icon"></span>
-        <input type="text" placeholder="SEARCH SPECIMEN">
+    <div class="search-container">
+        <div class="search-filter">
+            <select name="dropdown" id="dropdown">
+                <option value="" disabled selected>CLASS</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+        <div class="search-filter">
+            <select name="dropdown" id="dropdown">
+                <option value="" disabled selected>SKILL</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+        <div class="search-box">
+            <!-- <span class="search-icon"></span> -->
+            <input type="text" placeholder="SEARCH NAME OR SID">
+        </div>
     </div>
 </body>
+
+<script>
+    // Search Tabs
+    const tabs = document.querySelectorAll(".tab")
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => {
+            const i = index;
+    
+            // Remove 'active' class from all tabs
+            tabs.forEach(t => t.className = "tab");
+            tabs[i].className = "tab selected";
+        });
+    })
+
+    function initSpecimenSection(){
+
+    }
+
+    // Specimen Search Filters
+
+    // Search bar
+</script>
 
 </html>
