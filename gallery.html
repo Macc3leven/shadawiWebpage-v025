@@ -8,6 +8,8 @@
     <title>Gallery</title>
     <link rel="stylesheet" href="./css/text.css">
     <link rel="stylesheet" href="./css/gallery.css">
+    <link rel="stylesheet" href="./css/modals.css">
+    <link rel="stylesheet" href="./css/buttons.css">
 </head>
 
 <body>
@@ -16,62 +18,128 @@
         <p>Browse Through the shadawi galaxy and find the rarist of specimen</p>
     </div>
 
-    <div class="quick-tabs-container">
-        <div class="tab selected" style="border-radius: 24px 0 0 0;">
-            <p>SPECIMEN</p>
+    <section id="filterContainer" class="filter-content-container">
+        <div class="quick-tabs-container">
+            <div class="tab selected" style="border-radius: 24px 0 0 0;">
+                <p>SPECIMEN</p>
+            </div>
+            <div class="tab">
+                <p>OWNERS</p>
+            </div>
+            <div class="tab" style="border-radius: 0 24px 0 0;">
+                <p>PLAYERS</p>
+            </div>
         </div>
-        <div class="tab">
-            <p>OWNERS</p>
-        </div>
-        <div class="tab" style="border-radius: 0 24px 0 0;">
-            <p>PLAYERS</p>
-        </div>
-    </div>
 
-    <div class="search-container">
-        <div class="search-filter">
-            <select name="dropdown" id="dropdown">
-                <option value="" disabled selected>CLASS</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
+        <div class="search-container">
+            <div class="search-filter">
+                <select name="dropdown" id="specimenClassSelect">
+                    <option value="" disabled selected>CLASS</option>
+                    <option value="divine">DIVINE</option>
+                    <option value="elemental">ELEMENTAL</option>
+                    <option value="gas">GAS</option>
+                    <option value="undead">UNDEAD</option>
+                    <option value="humanoid">HUMANOID</option>
+                    <option value="plant">PLANT</option>
+                    <option value="beast">BEAST</option>
+                    <option value="fairy">FAIRY</option>
+                </select>
+            </div>
+            <div id="specimenSkillSelect" class="search-filter">
+                <select name="dropdown" id="specimenSkillSelect">
+                    <option value="" disabled selected>SKILL</option>
+                    <option value="brawler">Brawler</option>
+                    <option value="samurai">samurai</option>
+                    <option value="cursed">cursed</option>
+                    <option value="sorcerer">sorcerer</option>
+                    <option value="mystical">mystical</option>
+                    <option value="extrasensory">extrasensory</option>
+                    <option value="summoner">summoner</option>
+                    <option value="pychic">pychic</option>
+                    <option value="quantum">quantum</option>
+                </select>
+            </div>
+            <div class="search-box">
+                <!-- <span class="search-icon"></span> -->
+                <input type="text" id="searchInput" placeholder="SEARCH NAME OR SID">
+            </div>
         </div>
-        <div class="search-filter">
-            <select name="dropdown" id="dropdown">
-                <option value="" disabled selected>SKILL</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
+    </section>
+
+    <section id="galleryContainer" class="gallery-content-container">
+        <div class="card-collection">
+            <!-- <div class="custom-card" style="background-image: url(./images/seapunk.png)">
+                <div class="card-info">
+                    <h3>Cameron Williamson</h3>
+                    <p>CREATER TYPE</p>
+                </div>
+            </div> -->
         </div>
-        <div class="search-box">
-            <!-- <span class="search-icon"></span> -->
-            <input type="text" placeholder="SEARCH NAME OR SID">
+        <div class="player-collection">
+            <!-- <div class="player-card" style="background-image: url(./images/seapunk.png)">
+                <div class="player-card-info">
+                    <h3>Cameron Williamson</h3>
+                    <p>CREATER TYPE</p>
+                </div>
+            </div> -->
         </div>
-    </div>
+        <div class="results-container">
+            <div>
+                <p id="contentCount">5/356</p>
+            </div>
+            <div class="button-container">
+                <button class="button3">
+                    <p>previous</p>
+                </button>
+                <button class="button3">
+                    <p>Next</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <section id="modalContainer">
+        <div id="modal" class="modal">
+            <div class="close-button-container">
+                <button id="modalCloseBtn" class="close-button">&times;</button>
+            </div>
+            <div class="title-container">
+                <h1 id="modalTitle" class="sm-title">MIGHTY BIRD</h1>
+            </div>
+            <div id="modalImg" class="main-img-container">
+            </div>
+            <div class="cta-container">
+                <button class="button1">DISPLAY</button>
+            </div>
+            <div class="info-container">
+                <div class="content">
+                    <div id="legendContainer" class="legend_container">
+                        <h3 class="sm-title">LEGEND</h3>
+                        <br />
+                        <p id="legendText" style="text-indent: 40px">
+                            <!-- Legend text will be dynamically inserted here -->
+                        </p>
+                    </div>
+                    <div id="attributeContainer" class="atr_container">
+                        <h3 class="sm-title">ATTRIBUTES</h3>
+                        <br />
+                        <!-- Attribute items will be dynamically inserted here -->
+                    </div>
+                    <div id="statsContainer" class="atr_container">
+                        <h3 class="sm-title">STATS</h3>
+                        <br />
+                        <!-- Stats items will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 </body>
 
-<script>
-    // Search Tabs
-    const tabs = document.querySelectorAll(".tab")
-    tabs.forEach((tab, index) => {
-        tab.addEventListener("click", () => {
-            const i = index;
-    
-            // Remove 'active' class from all tabs
-            tabs.forEach(t => t.className = "tab");
-            tabs[i].className = "tab selected";
-        });
-    })
-
-    function initSpecimenSection(){
-
-    }
-
-    // Specimen Search Filters
-
-    // Search bar
+<!-- Javascript -->
+<script type="module" src="./js/gallery.js">
 </script>
 
 </html>

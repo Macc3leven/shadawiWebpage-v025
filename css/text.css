@@ -1,34 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
 @font-face {
     font-family: 'Apex';
-    /* Custom name for the font */
     src: url('../fonts/ApexMk2-Regular.otf') format('opentype');
-    /* Path to your font file */
     font-weight: normal;
-    /* Specify if it's a normal, bold, etc. font */
     font-style: normal;
-    /* Specify the style: normal, italic, etc. */
 }
 
 @font-face {
     font-family: 'Apex';
-    /* Custom name for the font */
     src: url('../fonts/ApexMk2-BoldExtended.otf') format('opentype');
-    /* Path to your font file */
     font-weight: bold;
-    /* Specify if it's a normal, bold, etc. font */
     font-style: normal;
-    /* Specify the style: normal, italic, etc. */
 }
 
 @font-face {
     font-family: 'Apex';
-    /* Custom name for the font */
     src: url('../fonts/ApexMk2-LightCondensed.otf') format('opentype');
-    /* Path to your font file */
     font-weight: lighter;
-    /* Specify if it's a normal, bold, etc. font */
     font-style: normal;
-    /* Specify the style: normal, italic, etc. */
 }
 
 h1,
@@ -60,19 +50,31 @@ a {
     letter-spacing: 2px;
 }
 
+select,
+input::placeholder {
+    font-family: "Apex", sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
 .big-title {
     text-align: center;
     font-size: clamp(46px, 12vw, 150px);
-
 }
 
-.title {
-    font-size: clamp(1.5rem, 4.5vw, 7rem);
+.mid-title {
+    /* font-size: clamp(2rem, 4.5vw, 7rem); */
+    font-size: 4rem;
 }
 
-.smtitle {
+.sm-title {
     /* font-size: clamp(8px, 8vw, 16px); */
-    font-size: 16px;
+    font-size:40px;
+}
+
+.modal-title {
+    /* font-size: clamp(8px, 8vw, 16px); */
+    font-size:40px;
 }
 
 .txtl {
