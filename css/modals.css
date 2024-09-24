@@ -68,7 +68,7 @@ X button from earlier code */
 }
 
 .info-container {
-    background-color: rgb(247, 226, 188);
+    background-color: rgb(204, 186, 154);
     grid-row: 4 / -1;
     grid-column: 1 / -1;
     overflow-y: scroll;

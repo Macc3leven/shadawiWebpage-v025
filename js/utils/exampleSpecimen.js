@@ -1,172 +1,166 @@
 const assetApiUrl = "https://dawi-asset-api-725ca903b96f.herokuapp.com/";
-const specimenObject = {
-  SID: 102,
-  name: "Mighty Bird",
-  totalForms: 1,
-  population: 8,
-  owned: 0,
-  family: "Chinon",
-  trait: "mystical",
-  build: "evo",
-  class: "divine",
-  purgLvl: "mighty",
-  creator: "Oneiric",
-  knownAbilities: "Wing Slap, Nest Cannon",
-  locations: {
-    assetsDirectory: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG",
-    mainDirectory: "Qmf9RhwSugiT2Q1v2eevWVTjytyPpmZiZxusrxCPP7EtkF",
+const attributes = ["class","purg_lvl","skil","build","population","form","max_form","size"];
+const stats = ["health","dammage","defense","time","stun","agility","power"];
+
+const specimenMockQuery = [
+  {
+    // info
+    name: "Domigra",
+    sid: 101,
+    description: "Puny purgator, bring me to the fight",
+    creator: "oneiric",
+    abilities: ["zephr Display", "Inferno Dragon Summoning"],
+    files: [
+      {
+        content: "mugshot",
+        src: "./images/domig.png",
+      },
+      {
+        content: "basemodel",
+        src: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_1000.glb",
+      },
+    ],
+
+    // attributes
+    class: "undead",
+    purg_lvl: "supermighty",
+    skill: "samurai",
+    build: "base",
+    population: 721,
+    form: 1,
+    max_form: 1,
+    size: "humanoid",
+
+    // Stats
+    health: 4000,
+    damage: 1020,
+    defense: 600,
+    time: 2,
+    stun: 400,
+    agility: 701,
+    power: 611,
   },
-  forms: [
-    {
-      abilityPack: [],
-      size: "humanoid",
-      owned: 0,
-      class: "divine",
-      build: "evo",
-      form: 1,
-      health: 6705,
-      damage: 1201,
-      defense: 400,
-      time: 8,
-      stun: 447,
-      agility: 277,
-      power: 907,
-    },
-  ],
-  created_at: 1671673885902,
-  updatedAt: 1715463368134,
-  description:
-    "In the ancient depths of the Shadawi Universe, there exists a celestial avian known as the Mighty Bird. Born into the revered Chinon family, guardians of cosmic balance and wielders of ancient energy, the Mighty Bird possesses a beak imbued with the power to consume, store, and disburse cosmic energies.",
-  abilities: [
-    {
-      form: "*",
-      skin: "*",
-      type: "strike",
-      skill: "martial arts",
-      name: "Wing Slap",
-      dataname: "wingslap",
-      description: "A furious wing attack",
-      mods: {
-        dam: 1.4,
-        power: 2,
+  {
+    // info
+    name: "Mighty Bird",
+    sid: 102,
+    description:
+      "In the ancient depths of the Shadawi Universe, there exists a celestial avian known as the Mighty Bird. Born into the revered Chinon family, guardians of cosmic balance and wielders of ancient energy, the Mighty Bird",
+    creator: "oneiric",
+    abilities: ["wing slap", "Nest Cannon"],
+    files: [
+      {
+        content: "mugshot",
+        src: "./images/mightybird.png",
       },
-      requiredPoints: 0,
-    },
-    {
-      form: "*",
-      skin: "*",
-      type: "ultStrike",
-      skill: "mystical",
-      name: "Nest Cannon",
-      dataname: "nestcannon",
-      description: "A blast of high kinetic energy, made of charged particles",
-      requiredPoints: 300,
-      mods: {
-        dam: 2.1,
-        stun: 4,
+      {
+        content: "basemodel",
+        src: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_1000.glb",
       },
-    },
-  ],
-  files: [
-    {
-      filename: "mugshot_1000.png",
-      fileType: "png",
-      content: "mugshot",
-      form: 1,
-      skin: 1,
-      link: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/mugshot_1000.png",
-    },
-    {
-      filename: "mugshot_2000.png",
-      fileType: "png",
-      content: "mugshot",
-      form: 2,
-      skin: 1,
-      link: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/mugshot_2000.png",
-    },
-    {
-      filename: "prefab_1000.glb",
-      fileType: "glb",
-      content: "prefab",
-      form: 1,
-      skin: 1,
-      link: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_1000.glb",
-    },
-    {
-      filename: "prefab_2000.glb",
-      fileType: "glb",
-      content: "prefab",
-      form: 2,
-      skin: 1,
-      link: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_2000.glb",
-    },
-    {
-      name: "dark-plane",
-      fileType: "terrain",
-      filename: null,
-      jsonSrc: "QmP74foPLQERLTtz2B3h3qM3Ves4qM6prWVwSLsK7aSaQq",
-    },
-  ],
-  skill: "mystical",
-};
+    ],
 
-const specimenSchema = {
-  SID: "102",
-  form: 1,
-  totalForms: 4,
-  name: "Mighty Bird",
-  formStage: "Alpha",
-  class: "divine",
-  build: "evo",
-  skill: "mystical",
-  family: "Chinon",
-  creator: "Oneiric",
-  owned: 0,
-  population: 8,
-  knownAbilities: ["Wing Slap", "Nest Cannon"],
+    // attributes
+    class: "divine",
+    purg_lvl: "mighty",
+    skill: "mystical",
+    build: "colors",
+    population: 2021,
+    form: 1,
+    max_form: 4,
+    size: "humanoid",
 
-  // Stats
-  health: 6705,
-  damage: 1201,
-  defense: 400,
-  agility: 277,
-  power: 907,
-  stun: 447,
-  time: 8,
+    // Stats
+    health: 8000,
+    damage: 2300,
+    defense: 700,
+    time: 7,
+    stun: 300,
+    agility: 323,
+    power: 911,
+  },
+  {
+    // info
+    name: "Cloud Ogre",
+    description: `I am known as Cloud Ogre, a being bound to the gaseous realm. Within me resides Jejar, a sentient cloud that evolves with my essence, more than just an extension—it is part of my soul. Once, my kind thrived until the divine entity Doomshade ravaged our land. In that chaos, I found newfound strength, amplifying my power tenfold. That encounter fueled my relentless pursuit of power, knowledge, and revenge. Over the ages, I've watched civilizations rise and fall, ruling my own kingdom. My greatest gift is my ability to shift forms. In my first form, I radiate mystic fire, a pure gas entity. In my second, I embrace raw physical might. But in my divine form, I become truly invincible, unmatched in strength and will. This is my story.`,
+    creator: "oneiric",
+    abilities: ["warriors melee", "Flamethower III"],
+    files: [
+      {
+        content: "mugshot",
+        src: "./images/cloudogre.png",
+      },
+      {
+        content: "basemodel",
+        src: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_1000.glb",
+      },
+    ],
 
-  files: [
-    {
-      filename: "mugshot_1000.png",
-      fileType: "png",
-      content: "mugshot",
-      src: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/mugshot_1000.png",
-    },
-    {
-      filename: "prefab_1000.glb",
-      fileType: "glb",
-      content: "prefab",
-      form: 1,
-      skin: 1,
-      link: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_1000.glb",
-    },
-  ],
-  description: `In the ancient depths of the Shadawi Universe, there exists a celestial avian known as the Mighty Bird. 
-  Born into the revered Chinon family, guardians of cosmic balance and wielders of ancient energy, the Mighty Bird`
-};
+    // attributes
+    class: "gas",
+    purg_lvl: "strong",
+    skill: "sorcerer",
+    build: "evo",
+    population: 721,
+    form: 1,
+    max_form: 3,
+    size: "humanoid",
 
-function getSpecimenAssets(spec = exampleSpecimen, formNumber = 1) {
+    // Stats
+    health: 4000,
+    damage: 1020,
+    defense: 600,
+    time: 2,
+    stun: 223,
+    agility: 941,
+    power: 445,
+  },
+  {
+    // info
+    name: "Seapunk",
+    sid: 104,
+    description: `Seapuk was once a peaceful spirit of the wind, guiding ships safely through the fog. His life changed when a shipwrecked mage bound him to a cursed plank of driftwood. The plank, alive with dark magic, fed on Seapuk's energy, trapping him in the physical world and transforming him into a fearsome force known as the Driftwood Warden. Seapuk, now bound to the plank, seeks a way to break free. When a mysterious figure offers a chance at freedom, Seapuk must face the original wielder of the plank—a malevolent spirit. His fate now rests on the outcome of this final, perilous battle.`,
+    creator: "oneiric",
+    abilities: ["zephr Display", "Inferno Dragon Summoning"],
+    files: [
+      {
+        content: "mugshot",
+        src: "./images/seapunk.png",
+      },
+      {
+        content: "basemodel",
+        src: "Qmaqqq4Br8svznZVpCrH27HcRa61VUsqPHy23eaYxW5caG/prefab_1000.glb",
+      },
+    ],
+
+    // attributes
+    class: "gas",
+    purg_lvl: "weak",
+    skill: "cursed",
+    build: "base",
+    population: 3001,
+    form: 1,
+    max_form: 1,
+    size: "humanoid",
+
+    // Stats
+    health: 3000,
+    damage: 855,
+    defense: 280,
+    time: 2,
+    stun: 605,
+    agility: 998,
+    power: 109,
+  },
+];
+
+function getSpecimenAssets(spec = specimenMockQuery[0]) {
   const { files } = spec;
-  const form = spec.forms[formNumber - 1];
 
   return {
-    abilities: spec.abilities.filter(
-      (ab) => ab.form == formNumber || ab.form.includes("*")
-    ),
-    mugshot: files.find((f) => f.content == "mugshot" && f.form == formNumber),
-    prefab: files.find((f) => f.content == "prefab" && f.form == formNumber),
-    terrain: files.find((f) => f.content == "prefab"),
-    form,
+    mugshot: files.find((f) => f.content == "mugshot"),
+    prefab: files.find((f) => f.content == "prefab"),
+    terrain: files.find((f) => f.content == "terrain"),
   };
 }
 
-export { assetApiUrl, specimenObject };
+export { assetApiUrl, specimenMockQuery, attributes, stats, getSpecimenAssets };
