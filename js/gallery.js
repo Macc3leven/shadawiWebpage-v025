@@ -1,3 +1,11 @@
+import {
+  attributes,
+  stats,
+  specimenMockQuery,
+  getSpecimenAssets,
+} from "./utils/exampleSpecimen.js";
+import { getData, saveData, removeData } from "./utils/storage.js";
+
 // === SPECIMEN SEARCH FILTERS === //
 const queryBody = {
   content: "specimen",
@@ -86,12 +94,6 @@ searchInput.addEventListener("submit", function (event) {
 });
 
 // === GALLERY DATA === //
-import {
-  attributes,
-  stats,
-  specimenMockQuery,
-  getSpecimenAssets,
-} from "./utils/exampleSpecimen.js";
 const galleryContainer = document.querySelector(".gallery-content-container");
 let totalCards = 0;
 let totalOwners = 0;
@@ -207,6 +209,7 @@ function closeModal() {
 
 function createSpecimenModal(specimenObject) {
   showModal();
+  saveData("currentSpecimenId", specimenObject.sid);
 
   const { sid, name, description } = specimenObject;
   const { mugshot } = getSpecimenAssets(specimenObject);
@@ -215,14 +218,17 @@ function createSpecimenModal(specimenObject) {
   document.getElementById("modalTitle").textContent = `#${sid} ${name}`;
 
   // Set the background image
-  document.getElementById("modalImg").style.backgroundImage = `url(${mugshot})`;
+  console.log(mugshot);
+  document.getElementById(
+    "modalImg"
+  ).style.backgroundImage = `url(${mugshot.src})`;
 
   // Set the legend text
   document.getElementById("legendText").textContent = description;
 
   // Populate attributes
   const attributeContainer = document.getElementById("attributeContainer");
-  attributeContainer.innerHTML = '<h3 class="sm-title">ATTRIBUTES</h3><br />'; // Reset and add header
+  attributeContainer.innerHTML = '<h3 class="sm-title">ATTRIBUTES</h3>'; // Reset and add header
   attributes.forEach((attr) => {
     let label = attr.includes("_") ? attr.replace("_", " ") : attr;
     let p = document.createElement("p");
@@ -233,13 +239,18 @@ function createSpecimenModal(specimenObject) {
 
   // Populate stats
   const statsContainer = document.getElementById("statsContainer");
-  statsContainer.innerHTML = '<h3 class="sm-title">STATS</h3><br />'; // Reset and add header
+  statsContainer.innerHTML = '<h3 class="sm-title">STATS</h3>'; // Reset and add header
   stats.forEach((stat) => {
+    let label = stat.includes("_") ? stat.replace("_", " ") : stat;
     let p = document.createElement("p");
     p.className = "stat_item";
-    p.textContent = `${stat.label}: ${stat.value}`;
+    p.textContent = `${label}: ${specimenObject[stat]}`;
     statsContainer.appendChild(p);
   });
+}
+
+function loadSpecimenDisplay(sid) {
+  // get all forms of current sid
 }
 
 // run

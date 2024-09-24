@@ -25,7 +25,8 @@ h1,
 h2,
 h3,
 p,
-a {
+a, 
+button {
     font-family: "Apex", sans-serif;
     font-weight: bold;
     margin: 0;

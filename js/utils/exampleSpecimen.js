@@ -1,6 +1,6 @@
 const assetApiUrl = "https://dawi-asset-api-725ca903b96f.herokuapp.com/";
-const attributes = ["class","purg_lvl","skil","build","population","form","max_form","size"];
-const stats = ["health","dammage","defense","time","stun","agility","power"];
+const attributes = ["class","purg_lvl","skill","build","population","form","max_form","size"];
+const stats = ["health","damage","defense","time","stun","agility","power"];
 
 const specimenMockQuery = [
   {
@@ -81,6 +81,7 @@ const specimenMockQuery = [
   {
     // info
     name: "Cloud Ogre",
+    sid: 103,
     description: `I am known as Cloud Ogre, a being bound to the gaseous realm. Within me resides Jejar, a sentient cloud that evolves with my essence, more than just an extension—it is part of my soul. Once, my kind thrived until the divine entity Doomshade ravaged our land. In that chaos, I found newfound strength, amplifying my power tenfold. That encounter fueled my relentless pursuit of power, knowledge, and revenge. Over the ages, I've watched civilizations rise and fall, ruling my own kingdom. My greatest gift is my ability to shift forms. In my first form, I radiate mystic fire, a pure gas entity. In my second, I embrace raw physical might. But in my divine form, I become truly invincible, unmatched in strength and will. This is my story.`,
     creator: "oneiric",
     abilities: ["warriors melee", "Flamethower III"],

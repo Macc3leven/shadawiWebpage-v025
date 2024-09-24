@@ -130,6 +130,18 @@ input::placeholder {
     /* min-height: 100vh; */
 }
 
+/* GALLERY */
+.no-data-block{
+    height: 100vh;
+    background-color: antiquewhite;
+}
+.no-data-block > h1{
+    top: 0px;
+}
+
+#ownersCol,#playersCol{
+    display: none;
+}
 
 /* CARDS */
 .card-collection{

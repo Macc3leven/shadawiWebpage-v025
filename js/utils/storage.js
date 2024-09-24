@@ -30,4 +30,4 @@ function getAllKeys() {
   return keys;
 }
 
-export { saveData, getData, getAllKeys, removeData, clearStorage, getAllKeys };
+export { saveData, getData, removeData, clearStorage, getAllKeys };

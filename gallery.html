@@ -67,35 +67,37 @@
     </section>
 
     <section id="galleryContainer" class="gallery-content-container">
-        <div class="card-collection">
-            <!-- <div class="custom-card" style="background-image: url(./images/seapunk.png)">
+            <div id="specimenCol" class="card-collection">
+                <!-- <div class="custom-card" style="background-image: url(./images/seapunk.png)">
                 <div class="card-info">
                     <h3>Cameron Williamson</h3>
                     <p>CREATER TYPE</p>
                 </div>
             </div> -->
-        </div>
-        <div class="player-collection">
-            <!-- <div class="player-card" style="background-image: url(./images/seapunk.png)">
-                <div class="player-card-info">
-                    <h3>Cameron Williamson</h3>
-                    <p>CREATER TYPE</p>
+            </div>
+            <div id="ownersCol" class="player-collection">
+                <div class="no-data-block"></div>
+                    <h1 class="big-title">No Data Available...</h1>
                 </div>
-            </div> -->
-        </div>
-        <div class="results-container">
-            <div>
-                <p id="contentCount">5/356</p>
             </div>
-            <div class="button-container">
-                <button class="button3">
-                    <p>previous</p>
-                </button>
-                <button class="button3">
-                    <p>Next</p>
-                </button>
+            <div id="playersCol" class="player-collection">
+                <div class="no-data-block">
+                    <h1 class="big-title">No Data Available...</h1>
+                </div>
             </div>
-        </div>
+            <div class="results-container">
+                <div>
+                    <p id="contentCount">5/356</p>
+                </div>
+                <div class="button-container">
+                    <button class="button3">
+                        <p>previous</p>
+                    </button>
+                    <button class="button3">
+                        <p>Next</p>
+                    </button>
+                </div>
+            </div>
     </section>
 
     <!-- Modals -->
@@ -116,26 +118,23 @@
                 <div class="content">
                     <div id="legendContainer" class="legend_container">
                         <h3 class="sm-title">LEGEND</h3>
-                        <br />
                         <p id="legendText" style="text-indent: 40px">
                             <!-- Legend text will be dynamically inserted here -->
                         </p>
                     </div>
                     <div id="attributeContainer" class="atr_container">
                         <h3 class="sm-title">ATTRIBUTES</h3>
-                        <br />
                         <!-- Attribute items will be dynamically inserted here -->
                     </div>
                     <div id="statsContainer" class="atr_container">
                         <h3 class="sm-title">STATS</h3>
-                        <br />
                         <!-- Stats items will be dynamically inserted here -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
 </body>
 
 <!-- Javascript -->
