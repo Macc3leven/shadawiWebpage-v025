@@ -127,21 +127,21 @@ input::placeholder {
 }
 
 .gallery-content-container {
-    /* min-height: 100vh; */
+    min-height: 100vh;
 }
 
 /* GALLERY */
 .no-data-block{
-    height: 100vh;
-    background-color: antiquewhite;
+    /* height: 100vh; */
+    border: solid 5px black;
 }
 .no-data-block > h1{
     top: 0px;
 }
 
-#ownersCol,#playersCol{
+/* #ownersCol,#playersCol{
     display: none;
-}
+} */
 
 /* CARDS */
 .card-collection{

@@ -1,6 +1,6 @@
 const assetUrl = `https://dawi-asset-api-725ca903b96f.herokuapp.com/`;
 const ipfsGateway = "https://beige-worthwhile-hornet-694.mypinata.cloud/ipfs/";
-import { saveData, getData } from "./storage";
+import { saveData, getData } from "./storage.js";
 
 async function specimenQuery(bodyReq={}){
     const page = bodyReq.page || 1;
@@ -35,3 +35,5 @@ async function playerQuery(bodyReq={}){
 
 }
 
+
+export {specimenQuery, tokenQuery, playerQuery};

@@ -5,6 +5,7 @@ import {
   getSpecimenAssets,
 } from "./utils/exampleSpecimen.js";
 import { getData, saveData, removeData } from "./utils/storage.js";
+import { specimenQuery } from "./utils/assetHandler.js";
 
 // === SPECIMEN SEARCH FILTERS === //
 const queryBody = {
@@ -95,6 +96,11 @@ searchInput.addEventListener("submit", function (event) {
 
 // === GALLERY DATA === //
 const galleryContainer = document.querySelector(".gallery-content-container");
+const collections = [
+  "specimenCollection",
+  "ownersCollection",
+  "playersCollection",
+];
 let totalCards = 0;
 let totalOwners = 0;
 let totalPlayers = 0;
@@ -111,7 +117,22 @@ const rarityColors = {
   unpurgable: "#8B0000",
 };
 
-function reloadGallery(queryBody) {
+function noGalleryData() {
+  return `<div class="no-data-block">
+                <h1>No Data Available...</h1>
+            </div>`;
+}
+
+function cleanGallery() {
+  collections.forEach((c) => {
+    const elem = document.getElementById(c);
+    while (elem.firstChild) {
+      elem.removeChild(elem.firstChild);
+    }
+  });
+}
+
+async function reloadGallery(queryBody) {
   const content = queryBody.content || "specimen";
 
   // verify if the client even needs to fetch content
@@ -119,17 +140,28 @@ function reloadGallery(queryBody) {
 
   switch (content) {
     case "specimen":
-      results = specimenData;
+      cleanGallery();
+
       // check if data needs to be fetched
+      results = specimenData; // await specimenQuery(queryBody);
+
       // populate gallery
+      results.forEach((spec) => {
+        createSpecimenCard(spec);
+      });
+
       // update totals
+      specimenData = results;
+
       break;
     case "owners":
+      cleanGallery();
       results = ownerData;
       // check if data needs to be fetched
       // populate gallery
       break;
     case "players":
+      cleanGallery();
       results = playerData;
       // check if data needs to be fetched
       // populate gallery
@@ -149,13 +181,12 @@ function setResultsTxt(totalResults, totalShowing) {
   ).textContent = `${totalResults}/${totalShowing}`;
 }
 
-function createSpecimenCard(indx = 0) {
-  const content = specimenData[indx];
+function createSpecimenCard(specimenObj) {
   const allRows = document.querySelectorAll(".card-collection");
   let currentRow = allRows[allRows.length - 1];
-  const { mugshot } = getSpecimenAssets(content);
+  const { mugshot } = getSpecimenAssets(specimenObj);
 
-  console.log(content.name, mugshot);
+  console.log(specimenObj.name, mugshot);
   // Create new card
   let newCard = document.createElement("div");
   newCard.className = "custom-card";
@@ -165,16 +196,16 @@ function createSpecimenCard(indx = 0) {
   let cardInfo = document.createElement("div");
   cardInfo.className = "card-info";
   let nameTxt = document.createElement("h3");
-  nameTxt.textContent = content.name;
+  nameTxt.textContent = specimenObj.name;
   let classTxt = document.createElement("p");
-  classTxt.textContent = `Class: ${content.class}` || "uk";
+  classTxt.textContent = `Class: ${specimenObj.class}` || "uk";
 
   // Append elements to the card
   cardInfo.appendChild(nameTxt);
   cardInfo.appendChild(classTxt);
   newCard.appendChild(cardInfo);
   newCard.onclick = () => {
-    createSpecimenModal(content);
+    createSpecimenModal(specimenObj);
   };
   currentRow.appendChild(newCard); // Add card to the current row
 
@@ -186,11 +217,12 @@ function createSpecimenCard(indx = 0) {
 const cards = document.querySelectorAll(".custom-card");
 const sections = document.querySelectorAll("section");
 const clsModalBtn = document.getElementById("modalCloseBtn");
+const displayBtn = document.getElementById("displayBtn");
 clsModalBtn.addEventListener("click", function () {
   closeModal();
 });
 
-// clear scroll
+
 function showModal() {
   sections.forEach((el) => {
     if (el.id != "modalContainer") {
@@ -216,6 +248,10 @@ function createSpecimenModal(specimenObject) {
 
   // Set the title
   document.getElementById("modalTitle").textContent = `#${sid} ${name}`;
+
+  document.getElementById("displayBtn").onclick = () => {
+    loadSpecimenDisplay(specimenObject.sid);
+  };
 
   // Set the background image
   console.log(mugshot);
@@ -249,15 +285,17 @@ function createSpecimenModal(specimenObject) {
   });
 }
 
+
+
+// --- DISPLAY --- //
 function loadSpecimenDisplay(sid) {
   // get all forms of current sid
 }
 
 // run
-createSpecimenCard();
-createSpecimenCard(1);
-createSpecimenCard(2);
-createSpecimenCard(3);
-createSpecimenCard();
-createSpecimenCard(1);
-createSpecimenCard(2);
+let i = 0;
+while (i < 8) {
+  const spec = specimenData[i % specimenData.length];
+  createSpecimenCard(spec);
+  i++;
+}
