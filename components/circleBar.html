@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Circle</title>
+    <link rel="stylesheet" href="../css/text.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333;
+        }
+        svg {
+            position: relative;
+            background-color: antiquewhite;
+        }
+        #center-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+
+    <svg width="300" height="300" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="#a5981e" stroke-width="10" fill="#de6969" stroke-dasharray="283" stroke-dashoffset="0" id="circle" />
+        
+        <text x="50%" y="73%" text-anchor="middle" dominant-baseline="middle" font-size="10" fill="#FFFFFF">
+            Elemental
+        </text>
+
+        <text x="50%" y="80%" text-anchor="middle" dominant-baseline="middle" font-size="5" fill="#FFFFFF">
+            Level: 3
+        </text>
+
+        <image href="../images/cloudogre.png" width="50" height="50" x="25%" y="20%" />
+        
+    </svg>
+
+    <script>
+        // JavaScript to modify the fill or reduction based on a condition
+        const circle = document.getElementById('circle');
+        const circleRadius = circle.r.baseVal.value;
+        const circumference = 2 * Math.PI * circleRadius;
+
+        // Set initial value
+        circle.style.strokeDasharray = `${circumference}`;
+        circle.style.strokeDashoffset = `${circumference}`;
+
+        function setProgress(percentage) {
+            const offset = circumference - (percentage / 100 * circumference);
+            circle.style.strokeDashoffset = offset;
+        }
+
+        // Example: Fill circle to 75%
+        setProgress(75);
+    </script>
+
+</body>
+</html>

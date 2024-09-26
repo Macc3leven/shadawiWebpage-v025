@@ -26,7 +26,8 @@ h2,
 h3,
 p,
 a, 
-button {
+button,
+svg text {
     font-family: "Apex", sans-serif;
     font-weight: bold;
     margin: 0;
