@@ -1,0 +1,97 @@
+.rising-text {
+  animation-name: riseUp; /* Reference the defined keyframes */
+  /* animation-timeline: view(); */
+  animation-duration: 1.5s; /* Duration of the animation */
+  animation-fill-mode: forwards; /* Ensures that the text stays in the end state */
+  animation-timing-function: ease-out; /* Speed curve of the animation */
+}
+
+.rising-text-scroll {
+  animation-name: riseUp; /* Reference the defined keyframes */
+  animation-timeline: view();
+  animation-range: exit -200px;
+  animation-fill-mode: forwards; /* Ensures that the text stays in the end state */
+  animation-timing-function: ease-out; /* Speed curve of the animation */
+}
+
+.vanish-section {
+  animation: vanish linear forwards;
+  animation-timeline: view(250px 10px);
+}
+
+.rotating-image {
+  color: #753b82;
+  animation: rotateImage 5s linear infinite; /* Adjust duration and timing function as needed */
+}
+
+
+
+/* ANIMATIONS */
+@keyframes rotateImage {
+  from {
+    transform: rotateY(0deg); /* Starting rotation angle */
+  }
+  to {
+    transform: rotateY(360deg); /* Ending rotation angle */
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: rotateZ(90deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: rotateZ(90deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes spinInFromLeft {
+  from {
+    transform: rotateZ(90deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes vanish {
+  from {
+    opacity: 1; /* End with the text being fully opaque */
+    /* background-color: #70ddff;
+    color: #ff6e7f; */
+  }
+  to {
+    opacity: 0;
+    scale: 3;
+  }
+}
+
+@keyframes riseUp {
+  from {
+    transform: translateY(
+      20px
+    ); /* Start position: 20px below the final position */
+    opacity: 0; /* Start with the text being fully transparent */
+  }
+  to {
+    transform: translateY(0); /* End position: original position */
+    opacity: 1; /* End with the text being fully opaque */
+  }
+}
+
+/* Here is my HTML page, analyse it, understand what content needs to be loaded, such as images, canvas and spline iframe. And create a real buffer loader function to your best knowledge. */

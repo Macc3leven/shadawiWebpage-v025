@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" class="Beast">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/nav.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/text.css" />
+    <link rel="stylesheet" href="./css/anims.css" />
+    <title>Shadawi Home</title>
+  </head>
+
+  <!-- BODY -->
+  <body>
+    <!-- LOADER -->
+    <style>
+      #loadingScreen {
+        position: fixed;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(26, 26, 26);
+        color: #ffffff;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+      }
+      #loadingProgress {
+        width: 50%;
+        height: 20px;
+        background: grey;
+        margin-top: 10px;
+      }
+    </style>
+
+    <div id="loadingScreen">
+      <h4>Loading...</h4>
+      <div id="loadingProgress">
+        <div
+          style="
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #de6969, pink);
+          "
+        ></div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="navbar">
+      <img class="logo-mark" src="./images/shadawi-logo-full.png" alt="" />
+      <div class="nav-content">
+        <a href="index.html">Dashboard</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="mint.html">Mint</a>
+        <a href="creators.html">Creators</a>
+      </div>
+    </nav>
+    <nav class="navbar__mobile">
+      <img class="logo-mark" src="./images/shadawi-logo-full.png" alt="" />
+      <img
+        id="toggleNavButton"
+        class="nav-image"
+        src="./images/menuIcon.png"
+        alt=""
+      />
+    </nav>
+    <div id="sidePanel" class="side-panel">
+      <p id="closeBtn">X</p>
+      <div class="nav-content">
+        <a href="index.html">Dashboard</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="mint.html">Mint</a>
+        <a href="creators.html">Creators</a>
+      </div>
+      <img class="logo-mark" src="./images/shadawi-logo-full.png" alt="" />
+    </div>
+    <!-- NAV ------------------------------------------>
+    <!-- PAGE -->
+    <div id="page_content">
+      <div id="hero" class="section-block">
+        <div class="basicTextBox">
+          <h2 id="hero-title">
+            <span>JOIN THE</span><br />
+            <span class="neo1">GALACTIC</span><br />
+            <span>BATTLE</span>
+          </h2>
+          <p>
+            Enter the world of Shadawi - Discover 3D specimens powered by
+            Polygon blockchain. Collect, Transform, and Battle, Become the
+            ultimate mage.
+          </p>
+          <div class="button-pair">
+            <a href="gallery.html" class="pos-btn">Gallery</a>
+            <a href="/dashboard" class="neg-btn">Dashboard ></a>
+          </div>
+        </div>
+      </div>
+      <!-- HERO ------------------------------------------>
+      <!-- SECTION 2 -->
+      <div class="section-block" style="min-height: fit-content">
+        <div class="section__content">
+          <div class="content__left">
+            <img src="./images/fanImage1.png" alt="" style="max-width: 100%" />
+          </div>
+          <div class="content__right">
+            <div class="basicTextBox stext">
+              <h3>
+                <span>A STORYLINE</span>
+                <span>MADE FOR</span>
+                <span>ADVENTURERS</span>
+              </h3>
+              <p style="display: flex">
+                <img src="./images/patreon-logo.png" alt="" class="square" />
+                In a universe molded by ancient powers, the key lies within the
+                grasp of its wielders...
+              </p>
+              <div class="button-pair">
+                <a
+                  href="https://patreon.com/LegendsOfShadawi?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink"
+                >
+                  Watch Legends Series >
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SECTION 2 ------------------------------------------>
+      <!-- SECTION 3 -->
+      <div class="section-block">
+        <div class="section__content rev">
+          <div class="content__left">
+            <div class="basicTextBox">
+              <h2 class="stext">BUILDS</h2>
+              <p class="stext">
+                We're launching four distinct smart contracts to house our
+                diverse ERC721 NFT collection, each customized for a specific
+                Shadawi build, to ensure every one operates with its distinct
+                functionality
+              </p>
+              <div class="button-pair">
+                <a href="mint.html" class="pos-btn">Mint</a>
+                <a
+                  href="https://shadawi.gitbook.io/shadawi-official-docs"
+                  class="neg-btn"
+                  >Documentation ></a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="content__right">
+            <iframe
+              id="builds-scene"
+              src="https://my.spline.design/cards12-de41ef3cbcaaa1890eddfb3c6667e11f/"
+              frameborder="0"
+              width="100%"
+              height="100%"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <!-- SECTION 3 ------------------------>
+      <!-- SECTION 4 -->
+      <div id="gemSection" class="gem-section">
+        <div id="gem-canvas-container">
+          <canvas id="gem-canvas"></canvas>
+        </div>
+
+        <div class="scrolling-content">
+          <div class="gems-title">
+            <h1>
+              <span class="glet">G</span>
+              <span class="glet">E</span>
+              <span class="glet">M</span>
+              <span class="glet">S</span>
+            </h1>
+          </div>
+          <section class="basicTextBox">
+            <h2 class="stext">POWERFUL</h2>
+            <p class="stext">
+              Gems are powerful artifacts that have the ability to speed up
+              evolution time of an Evo specimen.
+            </p>
+          </section>
+          <section class="basicTextBox">
+            <h2 class="stext">DIVERSE</h2>
+            <p class="stext">
+              There is a gem for each classification of Shadawi, Take a look.
+            </p>
+            <br />
+            <h4 id="gemName" class="stext">BEAST</h4>
+            <p id="gemDescription" class="stext">
+              There's a max of 128,000 gems for each class. Once they're gone,
+              gems must be burned in order for mining to continue.
+            </p>
+            <div class="gem-btn-container" style="max-width: 450px">
+              <div id="prevGemBtn">
+                <img
+                  class="rising-text"
+                  src="./images/arrowL.png"
+                  alt="previous"
+                />
+              </div>
+              <div id="nextGemBtn">
+                <img class="rising-text" src="./images/arrowR.png" alt="next" />
+              </div>
+            </div>
+          </section>
+          <section class="basicTextBox">
+            <h2 class="stext">LIMITED</h2>
+            <p class="stext">
+              There's a max of 128,000 gems for each class. Once they're gone,
+              gems must be burned in order for mining to continue.
+            </p>
+            <div class="button-pair">
+              <a href="mint.html" class="pos-btn">Mint Gems</a>
+              <a
+                href="https://shadawi.gitbook.io/shadawi-official-docs"
+                class="neg-btn"
+                >Documentation ></a
+              >
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- SECTION 4 ------------------------>
+      <!-- SECTION 5 -->
+      <div id="polygon_section" class="section-block">
+        <div class="section__content">
+          <div class="content__left">
+            <div class="basicTextBox">
+              <h3 class="stext">Powered by the Polygon Network</h3>
+              <p class="stext">
+                Only on the purple chain - Where transactions are low so the
+                entire world can participate in the Dawi Economy.
+              </p>
+            </div>
+          </div>
+          <div class="content__right">
+            <div class="image-container">
+              <img
+                class="rotating-image"
+                src="./images/polygon-logo.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SECTION 5 ------------------------>
+      <!-- FOOTER -->
+      <div id="last_section" class="section-block">
+        <canvas id="footer-canvas"></canvas>
+        <section>
+          <div class="basicTextBox">
+            <p class="stext">
+              Our diverse team of innovative artists and developers brings
+              Shadawi Universe to life. Merging artistic brilliance with
+              blockchain expertise, they craft unique virtual entities and
+              immersive metaverse experiences.
+            </p>
+            <div class="button-pair">
+              <a class="neg-btn" href="./creators.html">
+                <img src="./images/icon.png" alt="" /> Creators ></a
+              >
+            </div>
+          </div>
+        </section>
+        <footer class="footer-end">
+          <hr class="footer-divider" />
+          <div class="footer-content">
+            <img
+              class="logo-mark"
+              src="./images/shadawi-logo-full.png"
+              alt="Shadawi Logo"
+            />
+            <div class="footer-links">
+              <nav>
+                <ul class="nav-menu">
+                  <li><a href="policy.html">Policy</a></li>
+                  <li><a href="terms.html">Terms</a></li>
+                </ul>
+              </nav>
+              <div class="social-icons">
+                <a href="https://twitter.com/shadawi_nft"
+                  ><img src="./images/x.png" alt="Twitter"
+                /></a>
+                <a href="https://www.instagram.com/Shadawi_NFT/"
+                  ><img src="./images/instagram.png" alt="Instagram"
+                /></a>
+                <a
+                  href="https://patreon.com/LegendsOfShadawi?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink"
+                  ><img src="./images/patreon-logo.png" alt="Patreon"
+                /></a>
+              </div>
+            </div>
+          </div>
+          <p class="footer-copy">Shadawi® All rights reserved 2024</p>
+        </footer>
+      </div>
+      <!-- FOOTER ------------------------>
+    
+    </div>
+    <!-- PAGE CONTENT ---------------------->
+
+    <!-- J A V A S C R I P T -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- NAVBAR -->
+    <script src="./js/_navbar.js"></script>
+    <script src="./js/_scroller.js"></script>
+
+    <!-- GEMS HANDLER -->
+    <script type="module" src="./js/home.js"></script>
+
+    <!-- LOADER -->
+    <script src="./js/_loader.js"></script>
+  </body>
+</html>

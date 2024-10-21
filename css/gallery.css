@@ -133,11 +133,11 @@ input::placeholder {
 /* GALLERY */
 .no-data-block{
     /* height: 100vh; */
-    border: solid 5px black;
+    /* border: solid 5px black; */
 }
-.no-data-block > h1{
+/* .no-data-block > h1{
     top: 0px;
-}
+} */
 
 /* #ownersCol,#playersCol{
     display: none;

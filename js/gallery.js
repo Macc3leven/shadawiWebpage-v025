@@ -29,6 +29,7 @@ tabs.forEach((tab, index) => {
     queryBody.content = tabName;
 
     // reload gallery
+    cleanGallery();
     reloadGallery(queryBody);
   });
 });
@@ -104,9 +105,9 @@ const collections = [
 let totalCards = 0;
 let totalOwners = 0;
 let totalPlayers = 0;
-const ownerData = [];
-const playerData = [];
-const specimenData = specimenMockQuery;
+let ownerData = [];
+let playerData = [];
+let specimenData = specimenMockQuery;
 
 const rarityColors = {
   weak: "#CCCCCC",
@@ -117,8 +118,9 @@ const rarityColors = {
   unpurgable: "#8B0000",
 };
 
-function noGalleryData() {
-  return `<div class="no-data-block">
+function noGalleryData(galleryIndex = 0) {
+  const elementName = collections[galleryIndex];
+  document.getElementById(elementName).innerHTML = `<div class="no-data-block">
                 <h1>No Data Available...</h1>
             </div>`;
 }
@@ -140,38 +142,53 @@ async function reloadGallery(queryBody) {
 
   switch (content) {
     case "specimen":
-      cleanGallery();
-
       // check if data needs to be fetched
       results = specimenData; // await specimenQuery(queryBody);
 
       // populate gallery
-      results.forEach((spec) => {
-        createSpecimenCard(spec);
-      });
+      if (results.length > 0) {
+        results.forEach((spec) => {
+          createSpecimenCard(spec);
+        });
+      } else noGalleryData(0);
 
-      // update totals
+      // update data
       specimenData = results;
-
       break;
     case "owners":
-      cleanGallery();
-      results = ownerData;
       // check if data needs to be fetched
+      results = ownerData; // await specimenQuery(queryBody);
+
       // populate gallery
+      if (results.length > 0) {
+        results.forEach((spec) => {
+          createSpecimenCard(spec);
+        });
+      } else noGalleryData(0);
+
+      // update data
+      ownerData = results;
       break;
     case "players":
-      cleanGallery();
-      results = playerData;
       // check if data needs to be fetched
+      results = playerData; // await specimenQuery(queryBody);
+
       // populate gallery
+      if (results.length > 0) {
+        results.forEach((spec) => {
+          createSpecimenCard(spec);
+        });
+      } else noGalleryData(0);
+
+      // update data
+      playerData = results;
       break;
 
     default:
       break;
   }
 
-  // console.log({results});
+  console.log({results});
   setResultsTxt(results.length, results.length);
 }
 
@@ -213,6 +230,9 @@ function createSpecimenCard(specimenObj) {
   totalCards += 1;
 }
 
+function createOwnerBlock(ownerObj) {}
+function createPlayerBlock(ownerObj) {}
+
 // --- MODALS --- //
 const cards = document.querySelectorAll(".custom-card");
 const sections = document.querySelectorAll("section");
@@ -221,7 +241,6 @@ const displayBtn = document.getElementById("displayBtn");
 clsModalBtn.addEventListener("click", function () {
   closeModal();
 });
-
 
 function showModal() {
   sections.forEach((el) => {
@@ -284,8 +303,6 @@ function createSpecimenModal(specimenObject) {
     statsContainer.appendChild(p);
   });
 }
-
-
 
 // --- DISPLAY --- //
 function loadSpecimenDisplay(sid) {
