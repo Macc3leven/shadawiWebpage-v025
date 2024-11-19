@@ -60,7 +60,7 @@ input::placeholder {
 
 .big-title {
     text-align: center;
-    font-size: clamp(46px, 12vw, 150px);
+    font-size: clamp(71px, 12vw, 150px);
 }
 
 .mid-title {

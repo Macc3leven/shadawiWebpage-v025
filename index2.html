@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/loader.css" />
+    <link rel="stylesheet" href="./css/nav2.css" />
+    <link rel="stylesheet" href="./css/home2.css" />
+    <link rel="stylesheet" href="./css/text.css" />
+    <link rel="stylesheet" href="./css/anims.css" />
+</head>
+
+<body>
+    <!-- LOADER -->
+    <!-- <div id="loadingScreen">
+        <h4>Loading...</h4>
+        <div id="loadingProgress">
+            <div style="
+              width: 0%;
+              height: 100%;
+              background: linear-gradient(90deg, #de6969, pink);
+            "></div>
+        </div>
+    </div> -->
+
+    <!-- Navbar -->
+    <div id="navbar">
+        <div class="menu-icon">
+            <!-- This can be replaced with an actual icon or image -->
+            <div class="menu-bar"></div>
+        </div>
+    </div>
+    <div id="navOverlay">
+        <button id="overlayCloseBtn" class="close-button">&times;</button>
+        <a href="/dashboard">/DASHBOARD</a>
+        <a href="/gallery">/GALLERY</a>
+        <a href="/about">/ABOUT US</a>
+        <a href="/scene1.html">/CREATORS</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="section1">
+        <hr style="width: 95%; position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);">
+        <div class="txtSpan">
+            <span class="scroll-text">SCROLL DOWN</span>
+            <img src="./images/vertScrollPoint.png" alt="Scroll Icon" class="scroll-icon">
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section id="section2">
+
+    </section>
+
+
+
+    <!-- J A V A S C R I P T -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://threejs.org/build/three.module.js",
+            "three/addons/": "https://threejs.org/examples/jsm/"
+          }
+        }
+    </script>
+    <script type="module" src="./js/home2.js"></script>
+
+</body>
+
+</html>
