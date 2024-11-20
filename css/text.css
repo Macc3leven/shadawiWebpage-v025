@@ -59,13 +59,13 @@ input::placeholder {
 }
 
 .big-title {
-    text-align: center;
-    font-size: clamp(71px, 12vw, 150px);
+    /* text-align: center; */
+    font-size: clamp(71px, 12vw, 91px);
 }
 
 .mid-title {
-    /* font-size: clamp(2rem, 4.5vw, 7rem); */
-    font-size: 4rem;
+    font-size: clamp(45rem, 4.5vw, 65);
+    /* font-size: 4rem; */
 }
 
 .sm-title {

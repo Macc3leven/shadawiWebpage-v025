@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="./css/loader.css" />
     <link rel="stylesheet" href="./css/nav2.css" />
     <link rel="stylesheet" href="./css/home2.css" />
+    <link rel="stylesheet" href="./css/buttons2.css" />
     <link rel="stylesheet" href="./css/text.css" />
     <link rel="stylesheet" href="./css/anims.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- LOADER -->
     <!-- <div id="loadingScreen">
         <h4>Loading...</h4>
@@ -27,46 +27,100 @@
 
     <!-- Navbar -->
     <div id="navbar">
-        <div class="menu-icon">
-            <!-- This can be replaced with an actual icon or image -->
-            <div class="menu-bar"></div>
-        </div>
+      <div class="menu-icon">
+        <!-- This can be replaced with an actual icon or image -->
+        <div class="menu-bar"></div>
+      </div>
     </div>
     <div id="navOverlay">
-        <button id="overlayCloseBtn" class="close-button">&times;</button>
-        <a href="/dashboard">/DASHBOARD</a>
-        <a href="/gallery">/GALLERY</a>
-        <a href="/about">/ABOUT US</a>
-        <a href="/scene1.html">/CREATORS</a>
+      <button id="overlayCloseBtn" class="close-button">&times;</button>
+      <a href="/dashboard">/DASHBOARD</a>
+      <a href="/gallery">/GALLERY</a>
+      <a href="/about">/ABOUT US</a>
+      <a href="/scene1.html">/CREATORS</a>
     </div>
 
     <!-- Hero Section -->
     <section id="section1">
-        <hr style="width: 95%; position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);">
-        <div class="txtSpan">
-            <span class="scroll-text">SCROLL DOWN</span>
-            <img src="./images/vertScrollPoint.png" alt="Scroll Icon" class="scroll-icon">
-        </div>
+      <div class="reading-box">
+        <h1 class="big-title">
+          <span>Join The</span>
+          <span>Galactic</span>
+          <span>Battle</span>
+        </h1>
+        <p style="max-width: 300px">
+          Enter the world of Shadawi - Discover 3D specimens powered by Polygon
+          blockchain. Collect, Transform, and Battle, Become the ultimate mage.
+        </p>
+        <button class="button1">Money</button>
+      </div>
+
+      <hr />
+      <div class="txtSpan">
+        <p><span class="scroll-text">SCROLL DOWN</span></p>
+        <img
+          src="./images/vertScrollPoint.png"
+          alt="Scroll Icon"
+          class="scroll-icon"
+        />
+      </div>
     </section>
 
     <!-- Welcome Section -->
-    <section id="section2">
+    <section id="section2" style="max-height: 100vh;" >
+      <img src="./images/mage-drawing.png" alt="mage fanart" />
 
+      <div class="reading-box" style="top: 20px;  right: 20px; z-index: -1">
+        <h1 class="big-title" style="text-align: right;">
+          <span>Become The</span>
+          <span>Ultimate</span>
+          <span>Mage</span>
+        </h1>
+      </div>
+
+      <div
+        class="reading-box"
+        style="right: 20px; bottom: 0px; padding: 20px;  background-color: rgba(0, 0, 0, 0.5)"
+      >
+        <p style="max-width: 300px">
+          Welcome to Shadawi - where the mysteries of ancient magic merge with
+          advanced technology. Here, you can collect, train, and battle unique
+          mystical creatures across a vast galactic landscape. Engage in
+          thrilling PvP arenas, earn valuable blockchain rewards, and carve your
+          path to greatness. Whether you're after rare specimens, the thrill of
+          battle, or the allure of cosmic discovery, your journey begins now.
+          Embrace the adventure—master the Shadawi.
+        </p>
+        <br>
+        <div class="txtSpan" style="position: relative; right: 0">
+          <p><span class="scroll-text">SCROLL DOWN</span></p>
+          <img
+            src="./images/vertScrollPoint.png"
+            alt="Scroll Icon"
+            class="scroll-icon"
+          />
+        </div>
+      </div>
+
+      <div class="sectionFooter">
+        <p><span class="scroll-text">SCROLL DOWN</span></p>
+        <img
+          src="./images/vertScrollPoint.png"
+          alt="Scroll Icon"
+          class="scroll-icon"
+        />
+      </div>
     </section>
-
-
 
     <!-- J A V A S C R I P T -->
     <script type="importmap">
-        {
-          "imports": {
-            "three": "https://threejs.org/build/three.module.js",
-            "three/addons/": "https://threejs.org/examples/jsm/"
-          }
+      {
+        "imports": {
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
         }
+      }
     </script>
     <script type="module" src="./js/home2.js"></script>
-
-</body>
-
+  </body>
 </html>
