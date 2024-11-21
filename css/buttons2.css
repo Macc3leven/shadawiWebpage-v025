@@ -14,7 +14,7 @@
     -webkit-clip-path: polygon(0 0, 0 0, 100% 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 100%);
     clip-path: polygon(0 0, 0 0, 100% 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 100%);
     height: 40px;
-    font-size: 0.7rem;
+    font-size: 1rem;
     line-height: 14px;
     letter-spacing: 1.2px;
     transition: .2s .1s;
@@ -39,9 +39,21 @@
     border-radius: 40px;
     background-color: transparent;
     color: white;
-    font-size: 20px;
+    font-size: 1rem;
     cursor: pointer;
     outline: none;
+    transition: transform 0.2s ease;
+}
+
+.button3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
     transition: transform 0.2s ease;
 }
 

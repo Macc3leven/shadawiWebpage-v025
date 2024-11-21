@@ -14,6 +14,28 @@ hr {
   transform: translateX(-50%);
 }
 
+.reading-box {
+  justify-items: left;
+  text-align: left;
+  position: absolute;
+  margin-bottom: 100px;
+  bottom: 0px;
+  padding: 20px;
+}
+
+.reading-box > h1 {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.hbtn-container{
+    display: flex;
+}
+.hbtn-container > button{
+    margin-right:20px;
+}
+
 /* Sections */
 section {
   position: relative;
@@ -33,23 +55,6 @@ section {
   background-position: center; /* Centers the image within the section */
 }
 
-#section1 > .reading-box,
-#section2 > .reading-box {
-  justify-items: left;
-  text-align: left;
-
-  position: absolute;
-  margin-bottom: 100px;
-  bottom: 0px;
-  padding: 0 20px;
-}
-
-#section1 > .reading-box > h1,
-#section2 > .reading-box > h1 {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
 
 #section2 {
   background: linear-gradient(0deg, #1a1a1a, #694b4b);
