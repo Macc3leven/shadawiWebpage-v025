@@ -1,70 +1,84 @@
-import {
-  THREE,
-  GLTFLoader,
-} from "../../Display/js/threeEngine/threeWrapper.js";
+import { THREE, GLTFLoader } from "../threeEngineV1/threeWrapper.js";
 const loader = new GLTFLoader();
 
-// ==================== GEMS ==================== //
-var gemScene, gemCamera, gemRenderer;
+// elements
+const gem_scene_area = document.getElementById("section4");
+const gem_canvas = document.getElementById("gemsCanvas");
+const previous_gem_button = document.getElementById("prevGemBtn");
+const next_gem_btn = document.getElementById("nextGemBtn");
+const gem_name = document.getElementById("gemName");
+const gem_description = document.getElementById("gemDescription");
+
+// sceneObject
 var currentGem = {};
-var gemPause = false;
+const scne = {
+  scene: null,
+  camera: null,
+  renderer: null,
+  paused: false,
+  modelCache: null,
+  init: null
+};
 
-// Set up the gemScene
-async function initGems() {
-    const aspr = window.innerWidth / window.innerHeight;
-    gemScene = new THREE.Scene();
-    gemCamera = new THREE.PerspectiveCamera(75, aspr, 0.1, 1000);
-    gemCamera.position.z = 5;
-    gemRenderer = new THREE.WebGLRenderer({
-        antialias: true,
-        canvas: document.getElementById("gem-canvas"),
-        alpha: true,
-    });
-    gemRenderer.setClearColor("#98fb98", 0); // background color
-    gemRenderer.setSize(window.innerWidth, window.innerHeight);
+// Set up the scne.scene
+scne.init = async function initGems() {
+  const aspr = window.innerWidth / window.innerHeight;
+  scne.scene = new THREE.Scene();
+  scne.camera = new THREE.PerspectiveCamera(75, aspr, 0.1, 1000);
+  scne.camera.position.z = 5;
+  scne.renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    canvas: gem_canvas,
+    alpha: true,
+  });
+  scne.renderer.setClearColor("#98fb98", 0); // background color
+  scne.renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // Create a gemPrefab and add to the gemScene
-    await setGem(0);
+  // Create a gemPrefab and add to the scne.scene
+  await setGem(0);
+  animateGem();
 }
 
 function animateGem() {
   requestAnimationFrame(animateGem);
-  if (gemPause) return;
+  if (scne.paused) return;
 
   // Rotate the gemPrefab
-  if (currentGem.scene) {
-    currentGem.scene.rotation.x += 0.01;
-    currentGem.scene.rotation.y += 0.01;
+  if (currentGem.model) {
+    currentGem.model.rotation.x += 0.01;
+    currentGem.model.rotation.y += 0.01;
   }
 
-  gemRenderer.render(gemScene, gemCamera);
+  scne.renderer.render(scne.scene, scne.camera);
 }
 
 // Handle window resize
 window.addEventListener("resize", function () {
   var width = window.innerWidth;
   var height = window.innerHeight;
-  gemRenderer.setSize(width, height);
-  gemCamera.aspect = width / height;
-  gemCamera.updateProjectionMatrix();
+  scne.renderer.setSize(width, height);
+  scne.camera.aspect = width / height;
+  scne.camera.updateProjectionMatrix();
 });
 
 async function updateGem(url) {
   // delete gemData if any
-  console.log({ gemScene, l: currentGem.scene });
-  gemScene.remove(currentGem.scene);
+  console.log({ scne, l: currentGem.model });
+  scne.scene.remove(currentGem.model);
 
   // add gem data
   if (url) {
     const model = await loader.loadAsync(url);
-    currentGem.scene = model.scene;
+    currentGem.model = model.scene;
   } else {
     var geometry = new THREE.BoxGeometry(1, 1, 1);
     var material = new THREE.MeshBasicMaterial({ color: currentGem.color });
-    currentGem.scene = new THREE.Mesh(geometry, material);
+    currentGem.model = new THREE.Mesh(geometry, material);
   }
 
-  gemScene.add(currentGem.scene);
+  if (scne.modelCache) scne.scene.remove(scne.modelCache);
+  scne.scene.add(currentGem.model);
+  scne.modelCache = currentGem.model;
 }
 
 // SWAP CLASSES
@@ -134,10 +148,9 @@ const classesInfo = [
   },
 ];
 
-const prevGemBtn = document.getElementById("prevGemBtn");
-const nextGemBtn = document.getElementById("nextGemBtn");
-prevGemBtn.addEventListener("click", prevGem);
-nextGemBtn.addEventListener("click", nextGem);
+// Buttons for changing gems
+previous_gem_button.onclick = prevGem;
+next_gem_btn.onclick = nextGem;
 
 function nextGem() {
   const l = classesInfo.length;
@@ -146,7 +159,7 @@ function nextGem() {
 }
 
 function prevGem() {
-  classIndex = classIndex < 0 ? classIndex - 1 : 0;
+  classIndex = classIndex > 0 ? (classIndex -= 1) : 0;
   setGem(classIndex);
 }
 
@@ -169,178 +182,28 @@ async function setGem(classIndex) {
 
 function setOpacity() {
   if (classIndex >= classesInfo.length - 1) {
-    nextGemBtn.style.opacity = ".2";
+    next_gem_btn.style.opacity = ".2";
+    next_gem_btn.onclick = ()=>{};
   } else if (classIndex <= 0) {
-    prevGemBtn.style.opacity = ".2";
+    previous_gem_button.style.opacity = ".2";
+    previous_gem_button.onclick = ()=>{};
   } else {
-    nextGemBtn.style.opacity = "1";
-    prevGemBtn.style.opacity = "1";
+    next_gem_btn.style.opacity = "1";
+    previous_gem_button.style.opacity = "1";
+    previous_gem_button.onclick = prevGem;
+    next_gem_btn.onclick = nextGem;
   }
 }
 setOpacity();
 
 function setGemDetails(name, description) {
-  const gemName = document.getElementById("gemName");
-  const gemDescription = document.getElementById("gemDescription");
-  gemName.textContent = name;
-  gemDescription.textContent = description;
+  gem_name.textContent = name;
+  gem_description.textContent = description;
 }
 
 function setGemBackground(bgStyle) {
   console.log({ bgStyle });
-  document.getElementById("gem-canvas").style.background = bgStyle;
+  gem_scene_area.style.background = bgStyle;
 }
 
-// ==================== CREATORS ==================== //
-var creatorsScene,
-  creatorsCamera,
-  creatorsRenderer,
-  creatorsContainer,
-  chairModel;
-
-var deltaTheta = 0,
-  theta = 0,
-  radius = 2,
-  target;
-
-function initChair() {
-  // Set up the creatorsScene
-  creatorsScene = new THREE.Scene();
-  creatorsContainer = document.getElementById("footer-canvas");
-
-  // Create a basic perspective creatorsCamera
-  creatorsCamera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
-  creatorsCamera.position.z = 1;
-  creatorsCamera.position.y = 1;
-
-  // Create a creatorsRenderer with antialiasing and attach it to the canvas
-  creatorsRenderer = new THREE.WebGLRenderer({
-    antialias: true,
-    canvas: creatorsContainer,
-    alpha: true,
-  });
-
-  updateSize();
-
-  // Call this function where you need to start loading the model
-  const model = "./prefabs/chair02.glb";
-  loader.load(
-    model,
-    function (gltf) {
-      chairModel = gltf.scene;
-      creatorsScene.add(gltf.scene);
-      console.log({ rot: chairModel.rotation.y });
-
-      // creatorsCamera lock on
-      const chairPos = chairModel.position.clone();
-      chairPos.y += 0.5;
-      target = chairPos;
-      creatorsCamera.lookAt(chairPos);
-    },
-    undefined,
-    function (error) {
-      console.error(error);
-    }
-  );
-
-  // Add directional light to the creatorsScene
-  var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-  directionalLight.position.set(1, 1, 1); // Set position of light
-  creatorsScene.add(directionalLight); // Add light to creatorsScene
-}
-
-function updateSize() {
-  // Get new size
-  const width = creatorsContainer.clientWidth;
-  const height = creatorsContainer.clientHeight;
-
-  // Update creatorsCamera
-  creatorsCamera.aspect = width / height;
-  creatorsCamera.updateProjectionMatrix();
-
-  // Update creatorsRenderer
-  creatorsRenderer.setSize(width, height);
-  creatorsRenderer.setPixelRatio(window.devicePixelRatio);
-}
-
-var chairPause = false;
-function animateChair() {
-  requestAnimationFrame(animateChair);
-  if (chairPause) return;
-
-  // Rotate the cube
-  rotateAroundChair();
-  creatorsRenderer.render(creatorsScene, creatorsCamera);
-}
-
-function rotateAroundChair() {
-  if (!chairModel) return;
-
-  // Update the position of the creatorsCamera for orbiting
-  deltaTheta = 0.01; // Example angular speed, adjust as needed
-  theta += deltaTheta;
-
-  // Calculate new position based on angle
-  var newX = target.x + radius * Math.cos(theta);
-  var newZ = target.z + radius * Math.sin(theta);
-
-  // Set the new position of the creatorsCamera
-  creatorsCamera.position.set(newX, 1, newZ);
-  creatorsCamera.lookAt(target); // Make sure creatorsCamera is always looking at the target
-}
-
-// Handle window resize
-window.addEventListener("resize", function () {
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-  creatorsRenderer.setSize(width, height);
-  creatorsCamera.aspect = width / height;
-  updateSize();
-  creatorsCamera.updateProjectionMatrix();
-});
-
-//Run
-const gemElem = document.getElementById("gemSection");
-const creatorsElem = document.getElementById("last_section");
-function handleAnims(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      if (entry.target === gemElem) {
-        console.log("Gem Container is in the viewport.xxx ");
-        gemPause = false;
-        animateGem();
-      } else if (entry.target === creatorsElem) {
-        console.log("Creators Container is in the viewport.xxx");
-        chairPause = false;
-        animateChair();
-      }
-    } else {
-      if (entry.target === gemElem) {
-        gemPause = true;
-        console.log("Gem Container has left the viewport.000");
-      } else if (entry.target === creatorsElem) {
-        chairPause = true;
-        console.log("Creators Container has left the viewport.000");
-      }
-    }
-  });
-}
-
-const observerOptions = {
-  root: null, // Use the viewport as the root
-  threshold: 0.1, // Trigger when 10% of the element is visible
-};
-
-const observer = new IntersectionObserver(handleAnims, observerOptions);
-observer.observe(gemElem);
-observer.observe(creatorsElem);
-
-initGems();
-animateGem();
-initChair();
-animateChair();
+export default scne;
