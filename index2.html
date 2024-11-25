@@ -5,10 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+
+    <link rel="stylesheet" href="./css/nav.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+
     <link rel="stylesheet" href="./css/loader.css" />
-    <link rel="stylesheet" href="./css/nav2.css" />
-    <link rel="stylesheet" href="./css/home2.css" />
-    <link rel="stylesheet" href="./css/buttons2.css" />
+    <link rel="stylesheet" href="./css/buttons.css" />
     <link rel="stylesheet" href="./css/text.css" />
     <link rel="stylesheet" href="./css/anims.css" />
 </head>
@@ -45,8 +47,8 @@
 
 
 
-    <!-- Hero Section -->
-    <div id="sectionGroup1" style="background-color: aquamarine;">
+    <div id="sectionGroup1">
+        <!-- Hero Section -->
         <section id="section1">
             <div class="reading-box">
                 <h1 class="big-title">
@@ -54,11 +56,13 @@
                     <span>Galactic</span>
                     <span>Battle</span>
                 </h1>
-                <p style="max-width: 300px">
+                <p class="typeTxt" style="max-width: 300px">
                     Enter the world of Shadawi - Discover 3D specimens powered by Polygon
                     blockchain. Collect, Transform, and Battle, Become the ultimate mage.
                 </p>
-                <button class="button1">DASHBOARD</button>
+                <button class="button1">
+                    <a href="/dashboard/profile" class="button1">DASHBOARD</a>
+                </button>
             </div>
 
             <!-- <hr /> -->
@@ -67,6 +71,7 @@
                 <img src="./images/vertScrollPoint.png" alt="Scroll Icon" class="scroll-icon" />
             </div>
         </section>
+
 
 
 
@@ -90,12 +95,8 @@
                     <p><span class="scroll-text">WATCH ON PATREON</span></p>
                 </a>
             </div>
-
-            <div class="sectionFooter">
-                <p><span class="scroll-text">SCROLL DOWN</span></p>
-                <img src="./images/vertScrollPoint.png" alt="Scroll Icon" class="scroll-icon" />
-            </div>
         </section>
+
 
 
 
@@ -106,7 +107,7 @@
 
             <div class="reading-box" style="top: 20px; bottom: auto; z-index: 1">
                 <h1 class="big-title" style="text-align: left;">
-                    <span>Builds</span>
+                    <span class="stext">Builds</span>
                 </h1>
                 <p style="max-width: 300px">
                     Our ecosystem is powered by 4 distinct smart contracts, that handle key mechanics such as timed
@@ -115,8 +116,10 @@
                     look at each contract's architecture and functionality, explore the documentation.
                 </p>
                 <div class="hbtn-container">
-                    <button class="button1">Specimen Shop</button>
-                    <a href="/documentation" class="button3">
+                    <button class="button1">
+                        <a href="/shop/specimen">Specimen Shop</a>
+                    </button>
+                    <a href="/documentation/specimen" class="button3">
                         documentation
                         <span class="arrow">&#8250;</span>
                     </a>
@@ -127,6 +130,9 @@
         </section>
     </div>
 
+
+
+
     <!-- Gems -->
     <section id="section4">
         <canvas id="gemsCanvas"></canvas>
@@ -135,12 +141,12 @@
         <section>
             <div class="reading-box-2">
                 <h1 class="big-title gems-title">
-                    <span>G</span>
-                    <span>E</span>
-                    <span>M</span>
-                    <span>S</span>
+                    <span class="glet">G</span>
+                    <span class="glet">E</span>
+                    <span class="glet">M</span>
+                    <span class="glet">S</span>
                 </h1>
-                <p class="description" style="max-width: 300px; text-align: right;">
+                <p class="description stext" style="max-width: 300px; text-align: right;">
                     gems are given to evo type specimen to speed up their evolution time. Gems may be hard to obtain
                     from the mine as users are required to make quick precise timing to mine one.
                 </p>
@@ -148,10 +154,10 @@
         </section>
 
         <!-- subsection [class alter] -->
-        <section style="background-color: rgba(127, 255, 212, 0.521);">
+        <section>
             <div class="reading-box" style="top: 0; bottom: auto;">
                 <h3>Choose A Class</h3>
-                <h1 id="gemName" class="big-title">
+                <h1 id="gemName" class="big-title stext">
                     DEVINE
                 </h1>
                 <p id="gemDescription" style="max-width: 300px;">
@@ -170,31 +176,27 @@
                 </div>
             </div>
         </section>
-        
-        <!-- subsection [class alter] -->
-        <section style="background-color: rgba(82, 124, 110, 0.418);">
-            <div class="reading-box" style="top: 0; bottom: auto;">
-                <h3>Choose A Class</h3>
-                <h1 class="big-title">
-                    DEVINE
-                </h1>
-                <p style="max-width: 300px;">
-                    gems are given to evo type specimen to speed up their evolution time. Gems may be hard to obtain
-                    from the mine as users are required to make quick precise timing to mine one.
-                </p>
+
+        <!-- subsection [purchase now] -->
+        <section>
+            <div class="reading-box cent">
                 <div class="hbtn-container">
                     <button class="button2">
-                        <span class="arrow">&#8249;</span>
-                        Previous
+                        <a href="/shop/gems">
+                            Gems Shop
+                        </a>
                     </button>
-                    <button class="button2">
-                        NEXT
+                    <a href="/documentation/gems" class="button3">
+                        Documentation
                         <span class="arrow">&#8250;</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
     </section>
+
+
+
 
     <section id="section5">
         <img class="rotating-image" src="./images/polygonLogo.png" alt="" style="right: 20px; position: absolute;" />
@@ -212,6 +214,9 @@
         </div>
 
     </section>
+
+
+
 
     <section id="footerContainer">
         <canvas id="footerCanvas"></canvas>
@@ -231,18 +236,21 @@
                 </a>
             </div>
         </div>
-                
+
         <div class="reading-box" style="top: 20px; bottom: auto; right: 0px;">
             <ul class="links-ul">
-                <li><a href="https://google.com">gallery</a></li>
-                <li><a href="https://github.com">terms of service</a></li>
-                <li><a href="https://stackoverflow.com">privacy policy</a></li>
+                <p><a href="https://google.com">gallery</a></p>
+                <hr>
+                <p><a href="https://github.com">terms of service</a></p>
+                <hr>
+                <p><a href="https://stackoverflow.com">privacy popcy</a></p>
+                <hr>
             </ul>
-            <div style="width: 100%; position: relative;">
+            <!-- <div style="width: 100%; position: relative;">
                 <hr>
                 <br>
-            </div>
-            <h3 style="margin: 0px;">support</h3>
+            </div> -->
+            <h3 style="margin: 0px;">Reach Us:</h3>
             <p>team.shadawi@gmail.com</p>
         </div>
 

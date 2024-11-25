@@ -17,7 +17,8 @@ const scne = {
   renderer: null,
   paused: false,
   modelCache: null,
-  init: null
+  init: null,
+  container: gem_scene_area,
 };
 
 // Set up the scne.scene
@@ -37,7 +38,7 @@ scne.init = async function initGems() {
   // Create a gemPrefab and add to the scne.scene
   await setGem(0);
   animateGem();
-}
+};
 
 function animateGem() {
   requestAnimationFrame(animateGem);
@@ -45,7 +46,6 @@ function animateGem() {
 
   // Rotate the gemPrefab
   if (currentGem.model) {
-    currentGem.model.rotation.x += 0.01;
     currentGem.model.rotation.y += 0.01;
   }
 
@@ -53,13 +53,13 @@ function animateGem() {
 }
 
 // Handle window resize
-window.addEventListener("resize", function () {
-  var width = window.innerWidth;
-  var height = window.innerHeight;
+scne.resize = function (windowWidth, windowHeight) {
+  var width = windowWidth;
+  var height = windowHeight;
   scne.renderer.setSize(width, height);
   scne.camera.aspect = width / height;
   scne.camera.updateProjectionMatrix();
-});
+};
 
 async function updateGem(url) {
   // delete gemData if any
@@ -183,10 +183,10 @@ async function setGem(classIndex) {
 function setOpacity() {
   if (classIndex >= classesInfo.length - 1) {
     next_gem_btn.style.opacity = ".2";
-    next_gem_btn.onclick = ()=>{};
+    next_gem_btn.onclick = () => {};
   } else if (classIndex <= 0) {
     previous_gem_button.style.opacity = ".2";
-    previous_gem_button.onclick = ()=>{};
+    previous_gem_button.onclick = () => {};
   } else {
     next_gem_btn.style.opacity = "1";
     previous_gem_button.style.opacity = "1";
@@ -205,5 +205,19 @@ function setGemBackground(bgStyle) {
   console.log({ bgStyle });
   gem_scene_area.style.background = bgStyle;
 }
+
+scne.onObserve = function (entry, observer) {
+  if (entry !== gem_scene_area) return;
+
+
+  if (entry.isIntersecting) {
+    console.log("Gem Container is in the viewport ");
+    scne.paused = false;
+    animateGem();
+  } else {
+    scne.paused = true;
+    console.log("Gem Container has left the viewport.000");
+  }
+};
 
 export default scne;

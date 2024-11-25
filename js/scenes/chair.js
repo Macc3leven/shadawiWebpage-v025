@@ -14,7 +14,8 @@ const scne = {
     renderer: null,
     paused: false,
     modelCache: null,
-    init: null
+    init: null,
+    container: chair_canvas_area
   };
 
 var deltaTheta = 0,
@@ -111,13 +112,25 @@ function rotateAroundChair() {
 }
 
 // Handle window resize
-window.addEventListener("resize", function () {
-  var width = window.innerWidth;
-  var height = window.innerHeight;
+scne.resize = function (width, height) {
   scne.renderer.setSize(width, height);
   scne.camera.aspect = width / height;
   updateSize();
   scne.camera.updateProjectionMatrix();
-});
+};
+
+scne.onObserve = function (entry, observer) {
+  if (entry !== gem_scene_area) return;
+
+
+  if (entry.isIntersecting) {
+    console.log("Gem Container is in the viewport ");
+    scne.paused = false;
+    animateChair();
+  } else {
+    scne.paused = true;
+    console.log("Gem Container has left the viewport.000");
+  }
+};
 
 export default scne;

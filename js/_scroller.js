@@ -1,7 +1,7 @@
 const gletters = document.querySelectorAll(".glet");
 const stexts = document.querySelectorAll(".stext");
-
 const viewportHeight = window.innerHeight;
+
 function handleScroll() {
   gletters.forEach((glet) => {
     const rect = glet.getBoundingClientRect();
@@ -17,12 +17,19 @@ function handleScroll() {
   stexts.forEach((slideTxt) => {
     const rect = slideTxt.getBoundingClientRect();
     const alignType = slideTxt.style.textAlign;
-    
+
     // slide characters in from the left
     const relativePosition = rect.top / viewportHeight;
-    var rotation = 50 - (1 - relativePosition) * 100;
-    rotation = Math.max(0, rotation);
-    slideTxt.style.transform = `translateX(${rotation}%)`;
+    let x_postion = 50 - (1 - relativePosition) * 100;
+    x_postion = Math.max(0, x_postion);
+    if (slideTxt.style.textAlign == "right") {
+      slideTxt.style.transform = `translateX(${x_postion}%)`;
+    } else {
+      // left
+      slideTxt.style.transform = `translateX(${x_postion * -1}%)`;
+    }
+
+    // console.log({ st: slideTxt.style.textAlign, x_postion });
   });
 }
 
