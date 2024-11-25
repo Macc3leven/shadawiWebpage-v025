@@ -85,7 +85,7 @@ async function updateGem(url) {
 var classIndex = 0;
 const classesInfo = [
   {
-    src: "./prefabs/chair.glb",
+    src: "./prefabs/gem-undead.glb",
     name: "Divine",
     description:
       "Celestial, enigmatic being with heavenly traits beyond comprehension.",
@@ -93,7 +93,7 @@ const classesInfo = [
     color: "#ffcc00",
   },
   {
-    src: "./prefabs/chair02.glb",
+    src: "./prefabs/gem-undead.glb",
     name: "Gas",
     description:
       "Gas classified specimen are usually have a body with a fume-like texture.",
@@ -108,14 +108,14 @@ const classesInfo = [
     color: "#ffcc00",
   },
   {
-    src: "./prefabs/chair.glb",
+    src: "./prefabs/gem-undead.glb",
     name: "Beast",
     description: "Animalistic specimen displaying primal traits and instincts.",
     bgGradient: "linear-gradient(90deg, #ff3300, #ff9966)",
     color: "#ffcc00",
   },
   {
-    src: "./prefabs/chair02.glb",
+    src: "./prefabs/gem-undead.glb",
     name: "Fairy",
     description:
       "Petite, magical humanoid often depicted with wings and mischievous tendencies, tied to nature.",
@@ -131,7 +131,7 @@ const classesInfo = [
     color: "#ffcc00",
   },
   {
-    src: "./prefabs/chair.glb",
+    src: "./prefabs/gem-undead.glb",
     name: "Undead",
     description:
       "Reanimated, once-deceased entity often associated with immortality, malevolence, or decay.",
@@ -139,7 +139,7 @@ const classesInfo = [
     color: "#ffcc00",
   },
   {
-    src: "./prefabs/chair02.glb",
+    src: "./prefabs/gem-undead.glb",
     name: "Plant",
     description:
       "Organism composed partially or entirely of plant material, exhibiting botanical characteristics and traits.",
