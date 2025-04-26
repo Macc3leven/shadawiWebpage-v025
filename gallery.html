@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/gallery.css">
     <link rel="stylesheet" href="./css/modals.css">
     <link rel="stylesheet" href="./css/buttons.css">
+    <link rel="stylesheet" href="./css/loader.css">
 </head>
 
 <body>
@@ -24,16 +25,16 @@
                 <p>SPECIMEN</p>
             </div>
             <div class="tab">
-                <p>OWNERS</p>
+                <p>TOKENS</p>
             </div>
             <div class="tab" style="border-radius: 0 24px 0 0;">
-                <p>PLAYERS</p>
+                <p>OWNERS</p>
             </div>
         </div>
 
         <div class="search-container">
             <div class="search-filter">
-                <select name="dropdown" id="specimenClassSelect">
+                <select name="dropdown" id="schSelector1" class="search-filter">
                     <option value="" disabled selected>CLASS</option>
                     <option value="divine">DIVINE</option>
                     <option value="elemental">ELEMENTAL</option>
@@ -45,8 +46,8 @@
                     <option value="fairy">FAIRY</option>
                 </select>
             </div>
-            <div id="specimenSkillSelect" class="search-filter">
-                <select name="dropdown" id="specimenSkillSelect">
+            <div class="search-filter">
+                <select name="dropdown" id="schSelector2">
                     <option value="" disabled selected>SKILL</option>
                     <option value="brawler">Brawler</option>
                     <option value="samurai">samurai</option>
@@ -55,11 +56,11 @@
                     <option value="mystical">mystical</option>
                     <option value="extrasensory">extrasensory</option>
                     <option value="summoner">summoner</option>
-                    <option value="pychic">pychic</option>
+                    <option value="psychic">psychic</option>
                     <option value="quantum">quantum</option>
                 </select>
             </div>
-            <div class="search-box">
+            <div id="searchBox" class="search-box">
                 <!-- <span class="search-icon"></span> -->
                 <input type="text" id="searchInput" placeholder="SEARCH NAME OR SID">
             </div>
@@ -67,7 +68,7 @@
     </section>
 
     <section id="galleryContainer" class="gallery-content-container">
-        <div id="specimenCollection" class="card-collection">
+        <div id="cardCollection" class="card-collection">
             <!-- <div class="custom-card" style="background-image: url(./images/seapunk.png)">
                 <div class="card-info">
                     <h3>Cameron Williamson</h3>
@@ -75,33 +76,21 @@
                 </div>
             </div> -->
         </div>
-        <div id="ownersCollection" class="bar-collection">
-            <div class="no-data-block">
-                <h1>No Data Available...</h1>
-            </div>
-        </div>
-        <div id="playersCollection" class="bar-collection">
-            <div class="no-data-block">
-                <h1>No Data Available...</h1>
-            </div>
-        </div>
         <div class="results-container">
+            <button id="prevPgBtn" class="button3">
+                <p>&lt; previous</p>
+            </button>
             <div>
                 <p id="contentCount">5/356</p>
-            </div>
-            <div class="button-container">
-                <button class="button3">
-                    <p>previous</p>
-                </button>
-                <button class="button3">
-                    <p>Next</p>
-                </button>
-            </div>
+            </div> 
+            <button id="nextPgBtn" class="button3">
+                <p>Next &gt;</p>
+            </button>
         </div>
     </section>
 
     <!-- Modals -->
-    <section id="modalContainer">
+    <section id="modalContainer" class="modal">
         <div id="modal" class="modal">
             <div class="close-button-container">
                 <button id="modalCloseBtn" class="close-button">&times;</button>

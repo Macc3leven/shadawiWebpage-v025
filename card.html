@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .card-collection {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      /* gap: .1rem; */
+    }
+
+    .custom-card {
+      width: 20vw;
+      min-width: 120px;
+      aspect-ratio: 24/31;
+      color: white;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0% 15%);
+      margin: 16px 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+      background-position: center;
+      background-size: cover;
+      transition: transform 0.8s ease-in-out; /* Smooth transition */
+    }
+
+    .custom-card:hover {
+      animation: hoverAnimation 0.5s ease-in-out forwards;
+    }
+
+    @keyframes hoverAnimation {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05); /* Remain slightly scaled */
+      }
+    }
+
+    .card-info {
+      position: absolute;
+      width: 94%;
+      height: 24%;
+      left: 50%;
+      bottom: 2%;
+      transform: translateX(-50%);
+      background-color: dodgerblue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+      clip-path: polygon(15% 0, 100% 0, 100% 42%, 85% 100%, 0 100%, 0 0);
+    }
+
+    .card-info > h3 {
+      font-size: 12px;
+    }
+
+    .card-info > p {
+      font-size: 10px;
+    }
+  </style>
+  <body>
+    <div id="cardCollection" class="card-collection">
+      <!-- Start -->
+      <div
+        class="custom-card"
+        style="background-image: url('./images/domig.png')"
+      >
+        <div class="card-info">
+          <h3>Domigra</h3>
+          <p>Class: undead</p>
+        </div>
+      </div>
+      <div
+        class="custom-card"
+        style="background-image: url('./images/domig.png')"
+      >
+        <div class="card-info">
+          <h3>Domigra</h3>
+          <p>Class: undead</p>
+        </div>
+      </div>
+      <div
+        class="custom-card"
+        style="background-image: url('./images/domig.png')"
+      >
+        <div class="card-info">
+          <h3>Domigra</h3>
+          <p>Class: undead</p>
+        </div>
+      </div>
+      <div
+        class="custom-card"
+        style="background-image: url('./images/domig.png')"
+      >
+        <div class="card-info">
+          <h3>Domigra</h3>
+          <p>Class: undead</p>
+        </div>
+      </div>
+      <div
+        class="custom-card"
+        style="background-image: url('./images/domig.png')"
+      >
+        <div class="card-info">
+          <h3>Domigra</h3>
+          <p>Class: undead</p>
+        </div>
+      </div>
+
+      <!-- End -->
+    </div>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 
-#loadingScreen {
+#loadingimgScreen {
   position: fixed;
   display: none;
   top: 0;
@@ -14,9 +14,78 @@
   justify-content: center;
   align-items: center;
 }
-#loadingProgress {
+#loadingimgProgress {
   width: 50%;
   height: 20px;
   background: grey;
   margin-top: 10px;
 }
+
+/* ==========
+LOADER2
+<!-- From Uiverse.io by satyamchaudharydev --> 
+<div class="loadingimg">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+========== */
+
+
+/* From Uiverse.io by satyamchaudharydev */ 
+.loadingimg {
+  --speed-of-animation: 0.9s;
+  --gap: 6px;
+  --first-color: #000;
+  --second-color: #000;
+  --third-color: #000;
+  --fourth-color: #f6bb02;
+  --fifth-color: #de6969;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  gap: 6px;
+  height: 100px;
+  margin: 0 auto;
+ }
+ 
+ .loadingimg span {
+  width: 4px;
+  height: 50px;
+  background: var(--first-color);
+  animation: scale var(--speed-of-animation) ease-in-out infinite;
+ }
+ 
+ .loadingimg span:nth-child(2) {
+  background: var(--second-color);
+  animation-delay: -0.8s;
+ }
+ 
+ .loadingimg span:nth-child(3) {
+  background: var(--third-color);
+  animation-delay: -0.7s;
+ }
+ 
+ .loadingimg span:nth-child(4) {
+  background: var(--fourth-color);
+  animation-delay: -0.6s;
+ }
+ 
+ .loadingimg span:nth-child(5) {
+  background: var(--fifth-color);
+  animation-delay: -0.5s;
+ }
+ 
+ @keyframes scale {
+  0%, 40%, 100% {
+   transform: scaleY(0.05);
+  }
+ 
+  20% {
+   transform: scaleY(1);
+  }
+ }

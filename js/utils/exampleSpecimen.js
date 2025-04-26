@@ -1,7 +1,6 @@
 const assetApiUrl = "https://dawi-asset-api-725ca903b96f.herokuapp.com/";
 const attributes = ["class","purg_lvl","skill","build","population","form","max_form","size"];
 const stats = ["health","damage","defense","time","stun","agility","power"];
-
 const specimenMockQuery = [
   {
     // info

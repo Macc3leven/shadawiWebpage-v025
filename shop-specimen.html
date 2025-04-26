@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Specimen Shop</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0e0e0e; color: #fff; padding: 2rem; }
+    h1, h2 { margin-bottom: 1rem; }
+    .shop-container { max-width: 1000px; margin: 0 auto; }
+    .explanation { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+    .ledger { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .specimen-card { background: #2a2a2a; padding: 1rem; border-radius: 8px; text-align: center; }
+    .actions { display: flex; flex-direction: column; gap: 1.5rem; }
+    .action-box { background: #1a1a1a; padding: 1.5rem; border-radius: 12px; }
+    label, input, button { display: block; width: 100%; margin-top: 0.5rem; }
+    input { padding: 0.5rem; border: none; border-radius: 6px; margin-bottom: 1rem; }
+    button { padding: 0.75rem; background: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+    button:hover { background: #45a045; }
+  </style>
+</head>
+<body>
+  <div class="shop-container">
+    <h1>Specimen Shop</h1>
+    <section class="explanation">
+      <p>Welcome to the Specimen Shop. You can mint specimens using Polygon (MATIC) or unlock them using blockchain Research Tokens. Purchases follow the Global Ledger, meaning you always get the next available specimen in line. Already have a matching token? Use it to unlock instantly without spending MATIC.</p>
+    </section>
+
+    <h2>Global Ledger — Next Specimens</h2>
+    <section class="ledger" id="ledger">
+      <!-- JS will populate this -->
+    </section>
+
+    <section class="actions">
+      <div class="action-box">
+        <h2>Mint with Polygon</h2>
+        <label for="mintAmount">Amount to Mint</label>
+        <input type="number" id="mintAmount" placeholder="Enter number of specimens" />
+        <button onclick="mintWithPolygon()">Mint Specimens</button>
+      </div>
+
+      <div class="action-box">
+        <h2>Mint with Research Token</h2>
+        <label for="tokenSid">Enter Specimen SID</label>
+        <input type="text" id="tokenSid" placeholder="e.g. SID-0084" />
+        <button onclick="mintWithToken()">Redeem Token</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const ledger = document.getElementById('ledger');
+
+    const nextSpecimens = Array.from({ length: 10 }, (_, i) => ({
+      sid: `SID-${100 + i}`,
+      perg: Math.floor(Math.random() * 5) + 1,
+    }));
+
+    nextSpecimens.forEach(specimen => {
+      const card = document.createElement('div');
+      card.className = 'specimen-card';
+      card.innerHTML = `
+        <strong>${specimen.sid}</strong><br />
+        PERG Level: ${specimen.perg}
+      `;
+      ledger.appendChild(card);
+    });
+
+    function mintWithPolygon() {
+      const amount = document.getElementById('mintAmount').value;
+      if (!amount || amount <= 0) return alert('Enter a valid amount');
+      alert(`Minting ${amount} specimen(s) with Polygon...`);
+      // Your blockchain minting logic here
+    }
+
+    function mintWithToken() {
+      const sid = document.getElementById('tokenSid').value.trim();
+      if (!sid) return alert('Please enter a valid SID');
+      alert(`Redeeming Research Token for ${sid}...`);
+      // Your redemption logic here
+    }
+  </script>
+</body>
+</html>
